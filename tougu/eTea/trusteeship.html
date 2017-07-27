@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-title" content="大圆普洱 电子茶"/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="format-detection" content="telephone=no,email=no"/>
+    <meta name="keywords" content="大圆普洱 电子茶"/>
+    <meta name="description" content="大圆普洱 电子茶"/>
+    <title>再托管</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <script src="js/flexible_css.debug.js"></script>
+    <script src="js/flexible.debug.js"></script>
+</head>
+<body>
+<!--page start-->
+<div class="info-content">
+    <ul class="info-wrap">
+        <li>
+            <label>再托管数量</label><span id="input1">2饼</span>
+        </li>
+        <li>
+            <label>藏品售价</label><span id="input2">500元</span>
+        </li>
+        <li>
+            <label>藏品当前价</label><span id="input3">600元</span>
+        </li>
+        <li>
+            <label>补差价</label><span id="input4">100元</span>
+        </li>
+    </ul>
+</div>
+<form name="pickUp" class="form">
+    <div class="input-box">
+        <label>姓名</label><input type="text" value="代用名" placeholder="请输入姓名" id="input5">
+    </div>
+    <div class="input-box">
+        <label>联系方式</label><input type="tel" value="18912451234" placeholder="请输入联系方式" id="input6">
+    </div>
+    <div class="input-box">
+        <label>再托管账户</label><input type="text" placeholder="请输入再托管账户" id="input7">
+    </div>
+    <div class="submit">
+        <input type="button" value="申请再托管" id="submit">
+    </div>
+</form>
+
+<!--dialog start-->
+<div class="dialog-cover" id="info">
+    <div class="dialog-wrap">
+        <div class="dialog-header">
+            请核对再托管信息！<i class="icon-close"></i>
+        </div>
+        <div class="dialog-body">
+            <ul class="info-wrap">
+                <li>
+                    <label>再托管数量</label><span id="info1"></span>
+                </li>
+                <li>
+                    <label>藏品售价</label><span id="info2"></span>
+                </li>
+                <li>
+                    <label>藏品当前价</label><span id="info3"></span>
+                </li>
+                <li>
+                    <label>补差价</label><span id="info4"></span>
+                </li>
+                <li>
+                    <label>姓名</label><span id="info5"></span>
+                </li>
+                <li>
+                    <label>联系方式</label><span id="info6"></span>
+                </li>
+                <li>
+                    <label>再托管账户</label><span id="info7"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="dialog-footer">
+            <a href="javascript:void(0);" class="left-btn">
+                返回
+            </a>
+            <a href="javascript:void(0);" class="right-btn">
+                确认
+            </a>
+        </div>
+    </div>
+</div>
+<div class="dialog-cover" id="error">
+    <div class="dialog-wrap">
+        <div class="dialog-header">
+            报错信息<i class="icon-close"></i>
+        </div>
+        <div class="dialog-body error-tip">
+            读取信息错误
+        </div>
+        <div class="dialog-footer">
+            <a href="javascript:void(0);" class="enter-btn">
+                确认
+            </a>
+        </div>
+    </div>
+</div>
+<!--tip-dialog-->
+<div class="tip-dialog"></div>
+<!--dialog end-->
+<!--page end-->
+<script src="js/jquery.min.js"></script>
+<script src="js/common.js"></script>
+<script>
+    $(function() {
+        //申请再托管
+        $('#submit').on('click',function () {
+            $('#info1').html($('#input1').html());
+            $('#info2').html($('#input2').html());
+            $('#info3').html($('#input3').html());
+            $('#info4').html($('#input4').html());
+            $('#info5').html($('#input5').val());
+            $('#info6').html($('#input6').val());
+            $('#info7').html($('#input7').val());
+            showDialog($('#info'));
+        });
+
+        //dialog返回
+        $('.left-btn').on('click',function () {
+            hideDialog($('#info'));
+        });
+
+        //dialog确认
+        $('.right-btn').on('click',function () {
+            window.location.href = 'index.html';
+        });
+    });
+</script>
+</body>
+</html>

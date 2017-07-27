@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-title" content="大圆普洱 电子茶"/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="format-detection" content="telephone=no,email=no"/>
+    <meta name="keywords" content="大圆普洱 电子茶"/>
+    <meta name="description" content="大圆普洱 电子茶"/>
+    <title>E-TEA</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <script src="js/flexible_css.debug.js"></script>
+    <script src="js/flexible.debug.js"></script>
+</head>
+<body>
+<!--page start-->
+<div class="card-wrap">
+    <div class="card-box">
+        <div class="right-top"><span class="num">2</span><span>饼</span></div>
+        <div class="center">已激活</div>
+        <div class="left-bottom"><span>NO. </span><span>6001 1008</span></div>
+    </div>
+</div>
+<div class="detail-wrap">
+    <div class="commodity-img">
+        <img src="images/commodity-img.jpg">
+    </div>
+    <ul>
+        <li><label>藏品名称</label><span>中茶大树2016</span></li>
+        <li><label>藏品代码</label><span>600101</span></li>
+        <li><label>藏品售价</label><span>￥678.00</span></li>
+        <li><label>生产厂家</label><span>云南勐海</span></li>
+        <li><label>昨收价</label><span>70.36</span></li>
+    </ul>
+</div>
+<div class="member-wrap">
+    <i class="icon-mumber"></i><label>所属会员</label><span>大圆普洱交易市场</span>
+</div>
+<div class="operation-wrap">
+    <a href="javascript:void(0);" class="pick-up">
+        <div class="icon"><i class="icon-pick"></i></div>
+        <div class="title">提货</div>
+    </a>
+    <a href="javascript:void(0);" class="trusteeship disabled">
+        <div class="icon"><i class="icon-trusteeship"></i></div>
+        <div class="title">再托管</div>
+    </a>
+</div>
+<div class="open-wrap">
+    <a href="#">
+    <i class="icon-open"></i><span>开户</span>
+    </a>
+</div>
+
+<!--dialog start-->
+<div class="dialog-cover" id="password">
+    <div class="dialog-wrap">
+        <div class="dialog-header">
+            请输入密码<i class="icon-close"></i>
+        </div>
+        <div class="dialog-body">
+            <input type="password" placeholder="请输入密码" maxlength="12">
+        </div>
+        <div class="dialog-footer">
+            <a href="javascript:void(0);" class="enter-btn">
+                确认
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="dialog-cover" id="error">
+    <div class="dialog-wrap">
+        <div class="dialog-header">
+            报错信息<i class="icon-close"></i>
+        </div>
+        <div class="dialog-body error-tip">
+            读取信息错误
+        </div>
+        <div class="dialog-footer">
+            <a href="javascript:void(0);" class="enter-btn">
+                确认
+            </a>
+        </div>
+    </div>
+</div>
+<!--tip-dialog-->
+<div class="tip-dialog"></div>
+<!--dialog end-->
+
+<!--page end-->
+<script src="js/jquery.min.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+    $(function() {
+        //如果报错，调用错误弹框
+        showErrorDialog($('#error'),'对不起，读取信息错误，请重试');
+        $('#error').on('click','.enter-btn',function () {
+            hideDialog($('#error'));
+        });
+
+        //跳转二级页面
+        var goUrl = '';
+        $('.operation-wrap').on('click','a',function () {
+            if($(this).hasClass('disabled')){
+                showTipDialog($('.tip-dialog'),'您还未激活')
+            }else{
+                var index = $(this).index();
+                switch (index){
+                    case 0:
+                        goUrl = 'pickUp.html';
+                        break;
+                    case 1:
+                        goUrl = 'trusteeship';
+                        break;
+                }
+                showDialog($('#password'));
+            }
+        });
+
+        $('#password').on('click','.enter-btn',function () {
+            hideDialog($('#password'));
+            window.location.href = goUrl;
+        });
+    });
+</script>
+</body>
+</html>
