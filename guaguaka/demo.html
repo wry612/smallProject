@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width"/>
+    <title>wScratchPad</title>
+    <script type="text/javascript" src="jquery.1.11.0.min.js"></script>
+    <script type="text/javascript" src="wScratchPad.js"></script>
+</head>
+<body>
+<div id="demo1" style="height: 300px;width:50%;position: relative;">
+    <span style="position: absolute;top: 80px;width: 100%;text-align:center;left: 0;font-size: 38px;color:#f00;z-index: 1;">一等奖</span>
+</div>
+<script type="text/javascript">
+    // Test 1
+    $('#demo1').wScratchPad({
+        bg: 'winner.png',
+        fg: 'scratch-to-win.png',
+        size: 10,
+        cursor: 'url("bird.png") 5 5, default',
+        scratchMove: function (e, percent) {
+            if (percent > 70) {
+                this.clear();
+            }
+        }
+    });
+</script>
+</body>
+</html>
