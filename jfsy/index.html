@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<!-- saved from url=(0024)http://www.nicemore.com/ -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="http://hm.baidu.com/hm.js"></script>
+    <script type="text/javascript">
+        //for global use
+        var contextRootPath = "http://www.nicemore.com/";
+        var imageURL = "http://img.nicemore.com/estore/images";
+        var ctx = "http://www.nicemore.com/";
+        var isIndex = true;
+    </script>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="stylesheet" type="text/css" href="http://www.nicemore.com/res/css/newVersion/bootstrap.min.css">
+    <link href="http://www.nicemore.com/res/css/dpl/base.css" rel="stylesheet" type="text/css">
+    <link href="http://www.nicemore.com/res/css/global.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="http://www.nicemore.com/res/css/newVersion/globle.css">
+    <link rel="stylesheet" type="text/css" href="http://www.nicemore.com/res/css/newVersion/extend.css">
+    <link rel="shortcut icon" href="http://www.nicemore.com/res/images/16x16.ico">
+    <script type="text/javascript" src="http://www.nicemore.com/res/js/jquery/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="http://www.nicemore.com/res/js/jquery/menu-typeall.js"></script>
+    <script src="http://www.nicemore.com/res/js/newVersion/bootstrap.min.js"></script>
+    <script src="http://www.nicemore.com/res/js/newVersion/globle.js"></script>
+    <title>积分商城</title>
+    <link rel="shortcut icon" href="http://www.nicemore.com/res/images/16x16.ico">
+    <link rel="stylesheet" type="text/css" href="http://www.nicemore.com/res/css/newVersion/integral.css">
+    <link rel="stylesheet" type="text/css" href="http://www.nicemore.com/res/css/newVersion/animate.css">
+    <link rel="stylesheet" type="text/css" href="http://www.nicemore.com/res/css/remind.css">
+    <link rel="stylesheet" type="text/css" href="res/css/newCss/index.css">
+    <script src="http://www.nicemore.com/res/js/newVersion/jquery-2.1.4.min.js"></script>
+    <script src="http://www.nicemore.com/res/js/newVersion/index-banner-slide.js"></script>
+    <script type="text/javascript" src="http://www.nicemore.com/points/pointsIndex.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".hot-activity .fl li").mouseover(function () {
+                $(this).children("a").addClass("shake");
+            }).mouseout(function () {
+                $(this).children("a").removeClass("shake");
+            });
+            var level = $('div[name="level"]');
+            var levelTop = [];
+            for(var i=0;i<level.length;i++){
+                levelTop.push(level.eq(i).offset().top-20);
+            }
+
+            //回到顶部显示隐藏控制
+            $(window).scroll(function () {
+                var win_scrolltop = $(window).scrollTop();
+                var h = $(document).height();
+                if (win_scrolltop >= 720) {
+                    $(".go-top").fadeIn("fast");
+                } else {
+                    $(".go-top").fadeOut("fast");
+                }
+                if(win_scrolltop<levelTop[0]){
+                    console.log('hide')
+                }else if(win_scrolltop>=levelTop[levelTop.length-1]){
+                    $(".go-top a").removeClass('active');
+                    $(".go-top a").eq(levelTop.length-1).addClass('active');
+                }else{
+                    for(var i=0;i<levelTop.length-1;i++){
+                       if(levelTop[i]-140<=win_scrolltop && win_scrolltop < levelTop[i+1]-140){
+                           $(".go-top a").removeClass('active');
+                           $(".go-top a").eq(i).addClass('active');
+                       }
+                    }
+                }
+
+            });
+
+
+            $(".go-top").on('click', 'a', function () {
+                var top = $('#' + $(this).attr('data')).offset().top - 20;
+                $("html,body").animate({scrollTop: top}, 350);
+            });
+            $(".go-top .top").click(function () {
+                $("html,body").animate({scrollTop: 0}, 350);
+            });
+        });
+    </script>
+</head>
+
+<body>
+<div class="mask" id="mask"></div>
+
+<div class="warp">
+    <!--  登陆div  -->
+    <div id="longinDiv" style="display: none;">
+        <div id="longinlittleDiv" style="position: absolute; left: 726.5px; top: 259.5px; width: 450px; height: 440px;">
+            <link type="text/css" rel="stylesheet" href="http://www.nicemore.com/res/css/login.css">
+            <script type="text/javascript" src="http://www.nicemore.com/res/js/jquery/tabs.js"></script>
+            <script type="text/javascript" src="http://www.nicemore.com/res/js/jquery/DB_gallery.js"></script>
+            <script type="text/javascript" src="http://www.nicemore.com/shoppingCart/quickLogin.js"></script>
+
+            <input type="hidden" id="isCheckSecurityCode" value="0">
+            <div class="logincont">
+                <div class="" style="width:112%;">
+                    <div class="lc-out ">
+
+                        <div class="lc-ins">
+                            <img alt="" style="float:right;"
+                                 src="http://www.nicemore.com/res/images/mypersonal/icon-close-round-20.png"
+                                 onclick="closeDiv()">
+                            <div class="lc-title">
+                                欢迎登录莱斯商城
+                            </div>
+
+                            <!--  regname  -->
+                            <div class="item">
+                                <span class="pull-left label">账户名称：</span>
+                                <div class="pull-left item-cont">
+                                    <div class="regName">
+
+                                        <input type="text" class="text" name="username" value="账号／邮箱／手机" maxlength="100"
+                                               onfocus="if(value=='账号／邮箱／手机') {value=''}"
+                                               onblur="if(value=='') {value='账号／邮箱／手机'}">
+                                        <i class="i-icon i-name"></i>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  password  -->
+                            <div class="item">
+                                <span class="pull-left label">密码：</span>
+                                <div class="pull-left item-cont">
+                                    <input type="text" class="text" id="temp" value="密码" maxlength="100"
+                                           onfocus="intext()">
+                                    <input type="password" class="text" name="password" id="password" maxlength="100"
+                                           onblur="outtext()" style="display: none;">
+                                    <i class="i-icon i-pass"></i>
+                                </div>
+                            </div>
+
+                            <!--  securitycode  -->
+                            <div class="item scode" style="display: none;" id="securitycode_div">
+                                <span class="pull-left label">验证码：</span>
+                                <div class="pull-left item-cont ">
+                                    <div class="Securitycode">
+                                        <input type="text" class=" text text-code" name="Securitycode">
+                                    </div>
+                                    <label class="img pull-left">
+                                        <img id="imgs"
+                                             src="http://www.nicemore.com/shoppingCart/quickLoginController/loadSecurityCode.do"
+                                             onclick="changeSecurityCode()">
+                                    </label>
+                                    <div class="sctxt" style="margin-top:0px">
+
+                                        &nbsp;看不清？
+                                        <a id="newImg" class="red" href="javascript:changeSecurityCode();">换一张</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="item item-btn mt1 quickloginitem">
+                                <span class=" pull-left label">&nbsp;</span>
+                                <div class="pull-left item-cont mr15">
+                                    <input type="checkbox" checked="checked" class="checkbox" id="remember">
+                                    <label class="quicklogin-label">记住账号</label>
+                                </div>
+                                <div class="pull-left item-cont">
+                                    <input type="checkbox" class="checkbox" id="autoLogin">
+                                    <label class="quicklogin-label">7天内自动登录</label>
+                                </div>
+                                <div class="sctxt">
+                                    <a href="http://www.nicemore.com/forget/forgetPasswordController/init.do">忘记密码？</a>
+                                </div>
+                            </div>
+
+                            <div class="item item-btn">
+                                <span class=" pull-left label">&nbsp;</span>
+                                <div class="pull-left item-cont">
+                                    <a href="javascript:login()"><span class="btn login-btn"
+                                                                       style="color:#ffffff;">登录</span></a>
+                                    <a href="http://www.nicemore.com/common/loadTopController/nicemore/loadRegister.html"><span
+                                            class="reg btn" style="color:#333333;">注册</span></a>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="other-entry">
+                                <h3><span>第三方登录</span></h3>
+                                <div>
+                                    <a href="http://www.nicemore.com/weibo/weiboConnectController/weiboLogin.html"><em
+                                            class="sina"></em><i>微博登录</i></a>
+                                    <a href="http://www.nicemore.com/wx/weixinConnectController/wxLogin.html"><em
+                                            class="wechat"></em><i>微信登录</i></a>
+                                    <a href="http://www.nicemore.com/qq/qqConnectController/qqLogin.html"><em
+                                            class="qq"></em><i>QQ登录</i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!--  登陆div  -->
+
+    <!-- 导航菜单 -->
+    <div class="nice-nav">
+        <div id="ponintsTop">
+            <script type="text/javascript" language="javascript">
+                $.ajaxSetup({
+                    cache: false //close AJAX cache
+                });
+                var _hmt = _hmt || [];
+                (function () {
+                    var hm = document.createElement("script");
+                    hm.src = "//hm.baidu.com/hm.js?296887af32e8e8399f6ea2c7e64fd9fb";
+                    var s = document.getElementsByTagName("script")[0];
+                    s.parentNode.insertBefore(hm, s);
+                })();
+            </script>
+            <div class="top-nav">
+                <div class="fixed top-nav-box">
+                    <ul class="fl">
+                        <li><a href="#"> 积分商城 </a><a
+                                href="http://www.nicemore.com/shoppingCart/quickLoginController/turnLogin.html">
+                            请登录，</a>
+                            <a href="http://www.nicemore.com/common/loadTopController/loadRegister.html?showPage=1005&amp;showZone=1">免费注册</a>
+                        </li>
+                    </ul>
+                    <ul class="fr">
+                        <li>
+                            <a href="http://www.nicemore.com/personalCenter/personalCenterController/loadPersonalInit.html?strUrl=myOrder">我的订单</a>
+                        </li>
+                        <li class="my-down"><a class="my-nice"
+                                               href="http://www.nicemore.com/personalCenter/personalCenterController/loadPersonalInit.html?math="
+                                               +math.random()="">我的莱斯
+                            <div class="icon-sort"></div>
+                        </a>
+                            <ul class="my-down-menu">
+                                <li>
+                                    <a href="http://www.nicemore.com/personalCenter/personalCenterController/loadPersonalInit.html?strUrl=mySliver">已买到的商品</a>
+                                </li>
+                                <li>
+                                    <a href="http://www.nicemore.com/personalCenter/personalCenterController/loadPersonalInit.html?strUrl=favorites">我的收藏</a>
+                                </li>
+                                <li>
+                                    <a href="http://www.nicemore.com/personalCenter/personalCenterController/loadPersonalInit.html?strUrl=myCoupon">我的优惠券</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="http://www.nicemore.com/commonEdu/shoppingIntroductionController/loadShoppingIntroduction.html">服务中心</a>
+                        </li>
+                        <li>
+                            <a href="http://www.nicemore.com/commonEdu/customerServiceController/loadCustomerService.html">联系客服</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="pointsNavigation">
+            <script src="http://www.nicemore.com/res/js/newVersion/globle.js"></script>
+            <script>
+                function search() {
+                    var searchStr = $("#searchString").val();
+                    var str = "";
+                    if (searchStr == "请输入关键词") {
+                        str = "";
+                    }
+                    if (searchStr != "" && searchStr != "请输入关键词") {
+                        str = encodeURI(searchStr);
+                        str = "q" + str + "-";
+                    }
+                    window.document.location.href = ctx + "pointsSearch/" + str + "p1.html";
+                }
+                $("#searchString").keyup(function (e) {
+                    var keycode = e.which;
+                    if (keycode == 13) {
+                        search();
+                    }
+                });
+            </script>
+            <style>
+                .nice_down_hover {
+                    background-color: transparent;
+                }
+            </style>
+            <div class="bot-nav">
+                <div class="bot-nav-box">
+                    <div class="logo fl">
+                        <a class="link1" href="http://www.nicemore.com/"></a>
+                        <img src="res/images/newImages/integral-logo.png">
+                    </div>
+                    <div class="search">
+                        <input type="text" placeholder="请输入关键词" id="searchString">
+                        <button type="submit" onclick="search()">搜索</button>
+                    </div>
+                    <div class="bag fr">
+                        <a href="http://www.nicemore.com/shoppingCart/shoppingCartController/turnShoppingCart.html?shoppingCartType=2"
+                           class="fr">
+                            <div class="cart-number">0</div>
+                        </a>
+                        <a href="http://www.nicemore.com/shoppingCart/shoppingCartController/turnShoppingCart.html?shoppingCartType=2"
+                           class="fr">
+                            <div class="cart-name"><img src="res/images/newImages/icon-cart.png"><span>购物车</span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="bot-nav-box menu-wrap">
+                    <div class="fl menu">
+                        <ul class="fixed">
+                            <li class="nice-down"><a href="javascript:void(0)">全部商品分类</a></li>
+                            <li><a href="http://www.nicemore.com/pointsCategory/c221d0d221d0.html" target="_blank">时尚 ·
+                                定制</a></li>
+                            <li><a href="http://www.nicemore.com/snatch/snatchIndex.html" target="_blank">积分夺宝</a></li>
+                            <li><a href="http://www.nicemore.com/task/taskController/taskIndex.html" target="_blank">任务大厅</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="nice-down-list">
+                    <div class="fixed box">
+                        <ul class="menu-list">
+                            <li class="ww cent">
+                                <a href="http://www.nicemore.com/pointsCategory/c158d0d158d0.html">
+							<span class="icon">
+								<img src="res/images/newImages/kitchen-icon.png" class="normal-icon">
+							    <img src="res/images/newImages/hover-kitchen-icon.png" class="hover-icon">
+							</span>箱包皮具<em></em>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.nicemore.com/pointsCategory/c159d0d159d0.html">
+							<span class="icon">
+								<img src="res/images/newImages/bath-icon.png" class="normal-icon">
+							    <img src="res/images/newImages/hover-bath-icon.png" class="hover-icon">
+							</span>美妆个护<em></em>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.nicemore.com/pointsCategory/c160d0d160d0.html">
+							<span class="icon">
+								<img src="res/images/newImages/life-icon.png" class="normal-icon">
+							    <img src="res/images/newImages/hover-life-icon.png" class="hover-icon">
+							</span>食品酒水<em></em>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.nicemore.com/pointsCategory/c216d0d216d0.html">
+							<span class="icon">
+								<img src="res/images/newImages/jewelry-icon.png" class="normal-icon">
+							    <img src="res/images/newImages/hover-jewelry-icon.png" class="hover-icon">
+							</span>珠宝钟表<em></em>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.nicemore.com/pointsCategory/c221d0d221d0.html">
+							<span class="icon">
+								<img src="res/images/newImages/jx-icon.png" class="normal-icon">
+							    <img src="res/images/newImages/hover-jx-icon.png" class="hover-icon">
+							</span>匠心定制<em></em>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.nicemore.com/pointsCategory/c227d0d227d0.html">
+							<span class="icon">
+								<img src="res/images/newImages/sm-icon.png" class="normal-icon">
+							    <img src="res/images/newImages/hover-sm-icon.png" class="hover-icon">
+							</span>家电数码<em></em>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.nicemore.com/pointsCategory/c234d0d234d0.html">
+							<span class="icon">
+								<img src="res/images/newImages/clean-icon.png" class="normal-icon">
+							    <img src="res/images/newImages/hover-clean-icon.png" class="hover-icon">
+							</span>家居家装<em></em>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.nicemore.com/pointsCategory/c248d0d248d0.html">
+							<span class="icon">
+								<img src="res/images/newImages/jj-icon.png" class="normal-icon">
+							    <img src="res/images/newImages/hover-jj-icon.png" class="hover-icon">
+							</span>厨具洗化<em></em>
+                                </a>
+                            </li>
+
+                        </ul>
+                        <div class="menu-list-con">
+                            <div class="active">
+                                <a href="http://www.nicemore.com/pointsCategory/c212d1d212d1.html">时尚女包</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c218d1d218d1.html">精品男包</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c247d1d247d1.html">钥匙包/扣</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c263d1d263d1.html">首饰盒戒盒</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c264d1d264d1.html">功能箱包</a>
+                            </div>
+                            <div>
+                                <a href="http://www.nicemore.com/pointsCategory/c169d1d169d1.html">面部护理</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c170d1d170d1.html">香水彩妆</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c273d1d273d1.html">美妆用具</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c274d1d274d1.html">清洁工具</a>
+                            </div>
+                            <div>
+                                <a href="http://www.nicemore.com/pointsCategory/c167d1d167d1.html">进口果酒</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c224d1d224d1.html">冲调饮品</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c250d1d250d1.html">茶饮</a>
+                            </div>
+                            <div>
+                                <a href="http://www.nicemore.com/pointsCategory/c217d1d217d1.html">银饰品系列</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c225d1d225d1.html">玉石吊坠</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c226d1d226d1.html">玉石手镯</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c233d1d233d1.html">饰品套装</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c266d1d266d1.html">耳环</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c267d1d267d1.html">发箍</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c268d1d268d1.html">手镯/手链</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c269d1d269d1.html">项链</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c270d1d270d1.html">欧美手表</a>
+                            </div>
+                            <div>
+                                <a href="http://www.nicemore.com/pointsCategory/c222d1d222d1.html">木艺品</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c223d1d223d1.html">泥塑</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c265d1d265d1.html">水晶工艺品</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c271d1d271d1.html">皮影</a>
+                            </div>
+                            <div>
+                                <a href="http://www.nicemore.com/pointsCategory/c231d1d231d1.html">料理机</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c232d1d232d1.html">空气净化器</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c243d1d243d1.html">文仪耗材</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c251d1d251d1.html">咖啡机</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c252d1d252d1.html">电烤箱</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c253d1d253d1.html">面包机</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c254d1d254d1.html">料理机</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c255d1d255d1.html">烤盘</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c256d1d256d1.html">电水壶</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c258d1d258d1.html">挂烫机熨斗</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c259d1d259d1.html">酸奶机</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c260d1d260d1.html">蒸蛋器</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c280d1d280d1.html">净水机</a>
+                            </div>
+                            <div>
+                                <a href="http://www.nicemore.com/pointsCategory/c235d1d235d1.html">床品四件套</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c236d1d236d1.html">被套</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c237d1d237d1.html">枕套</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c238d1d238d1.html">床单</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c239d1d239d1.html">春季被子</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c240d1d240d1.html">床品三件套</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c241d1d241d1.html">凉席/凉枕</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c244d1d244d1.html">枕头</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c245d1d245d1.html">毛巾/浴巾</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c246d1d246d1.html">餐厨用具</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c261d1d261d1.html">生活用品</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c262d1d262d1.html">家装软饰</a>
+                            </div>
+                            <div>
+                                <a href="http://www.nicemore.com/pointsCategory/c249d1d249d1.html">刀具/砧板</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c275d1d275d1.html">烹饪锅具</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c276d1d276d1.html">厨房套件</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c277d1d277d1.html">保温杯茶具</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c278d1d278d1.html">保鲜盒饭盒</a>
+                                <a href="http://www.nicemore.com/pointsCategory/c279d1d279d1.html">生活用品</a>
+                            </div>
+                        </div>
+                        <div class="pro">
+                            <div class="ad-wrap clearfix">
+                                <a href="#"><img src="res/images/adv/ad1.png"></a>
+                                <a href="#"><img src="res/images/adv/ad2.png"></a>
+                                <a href="#"><img src="res/images/adv/ad3.png"></a>
+                                <a href="#"><img src="res/images/adv/ad4.png"></a>
+                                <a href="#"><img src="res/images/adv/ad5.png"></a>
+                                <a href="#"><img src="res/images/adv/ad6.png"></a>
+                                <a href="#"><img src="res/images/adv/ad7.png"></a>
+                                <a href="#"><img src="res/images/adv/ad8.jpg"></a>
+                            </div>
+                            <div class="ad-bottom">
+                                <a href="#"><img src="res/images/adv/ad9.jpg"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 导航菜单 -->
+
+    <!-- banner幻灯片 -->
+    <div class="index-banner">
+        <ul class="fixed">
+            <li>
+                <a href="http://www.nicemore.com/advertZIPFolder/20170519112112153/nqdwpc0522/index.html"
+                   target="_blank" num="0">
+                    <img src="res/images/adv/banner.jpg">
+                </a>
+            </li>
+            <li>
+                <a href="http://www.nicemore.com/advertZIPFolder/20170516205257990/lsprtz0516pc/notice.html"
+                   target="_blank" num="1">
+                    <img src="res/images/adv/banner.jpg">
+                </a>
+            </li>
+            <li>
+                <a href="http://www.nicemore.com/advertZIPFolder/20170505203840990/lsprgg58pc/index.html"
+                   target="_blank" num="2">
+                    <img src="res/images/adv/banner.jpg">
+                </a>
+            </li>
+        </ul>
+        <div class="change-btn"><a></a><a></a><a></a></div>
+        <div class="shadow"></div>
+    </div>
+    <!-- banner幻灯片 -->
+
+    <!-- main主体 -->
+    <div class="main">
+        <div id="level1" name="level" class="limited-indulgence">
+            <div class="title">
+                <div class="time">本场剩余时间: <span>10</span>小时 <span>35</span>分钟 <span>46</span>秒</div>
+                <span>限时特惠</span></div>
+            <div class="clearfix">
+                <div class="section fl">
+                    <div class="item">
+                        <a href="http://www.nicemore.com/pointsCategory/c250d1d250d1.html" target="_blank" class="fl">
+                            <img src="res/images/adv/1.jpg">
+                        </a>
+                        <a href="http://www.nicemore.com/pointsSearch/q%E5%AE%9C%E5%85%B4-p1.html" target="_blank"
+                           class="fr">
+                            <img src="res/images/adv/3.jpg">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="http://www.nicemore.com/pointsCategory/c250d1d250d1.html" target="_blank" class="fl">
+                            <img src="res/images/adv/2.jpg">
+                        </a>
+                        <a href="http://www.nicemore.com/pointsSearch/q%E5%AE%9C%E5%85%B4-p1.html" target="_blank"
+                           class="fr">
+                            <img src="res/images/adv/4.jpg">
+                        </a>
+                    </div>
+                </div>
+                <div class="fr login" id="mainLogin">
+                    <div class="no-login">
+                        <div class="tip">您好，请先登录</div>
+                        <div class="login_btn"><a href="javascript:showLoginDIV();">登录账户</a></div>
+                        <div class="register"><a
+                                href="http://www.nicemore.com/common/loadTopController/loadRegister.html?showPage=1005&amp;showZone=1">没账户？请注册</a>
+                        </div>
+                        <div class="view"><a href="http://www.nicemore.com/snatch/empiric/toRecharge.html"
+                                             target="_blank">查看积分数量</a></div>
+                        <div class="view"><a href="http://www.nicemore.com/snatch/empiric/toRecharge.html"
+                                             target="_blank">查看会员等级</a></div>
+                        <div class="info">1积分=1元</div>
+                        <div class="question"><a
+                                href="http://www.nicemore.com/commonEdu/pointsRuleController/loadPointsRule.html;jsessionid=7AD91C94BFF0245D3967BD9A9BC508F5">如何赚取积分？</a>
+                        </div>
+                    </div>
+                    <div class="has-login">
+                        <div class="face">
+                            <img src="res/images/newImages/face.png">
+                        </div>
+                        <div class="name">
+                            欢迎回来，李先生
+                        </div>
+                        <div class="total">积分总数:</div>
+                        <div class="total-num">
+                            333336
+                        </div>
+                        <div class="total-money">
+                            积分价值:333336元
+                        </div>
+                        <div class="login_btn"><a href="javascript:void(0);">立即兑换</a></div>
+                        <div class="login_btn"><a href="javascript:void(0);" class="border">获取更多莱斯积分</a></div>
+                        <div class="more"><a
+                                href="http://www.nicemore.com/commonEdu/pointsRuleController/loadPointsRule.html;jsessionid=7AD91C94BFF0245D3967BD9A9BC508F5"><em
+                                class="glyphicon glyphicon-question-sign"></em>积分常见问题</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="level2" name="level" class="jf-section clearfix">
+            <div class="section-item">
+                <div class="item-header">
+                    <div class="header-title">
+                        0-1000积分专区<a href="#">更多</a>
+                    </div>
+                </div>
+                <div class="item-body">
+                    <a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                       target="_blank"><img src="res/images/adv/5.jpg"></a>
+                </div>
+            </div>
+            <div class="section-item">
+                <div class="item-header">
+                    <div class="header-title">
+                        1000-10000积分专区<a href="#">更多</a>
+                    </div>
+                </div>
+                <div class="item-body">
+                    <ul class="clearfix">
+                        <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                               target="_blank">
+                            <div class="img-box"><img src="res/images/adv/6.jpg"></div>
+                            <div class="infor-box">
+                                <p class="name">JOJO真皮带四叶草石英表</p>
+                                <p class="num">1630积分</p>
+                            </div>
+                        </a>
+                        </li>
+                        <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                               target="_blank">
+                            <div class="img-box"><img src="res/images/adv/7.jpg"></div>
+                            <div class="infor-box">
+                                <p class="name">JOJO真皮带四叶草石英表</p>
+                                <p class="num">1630积分</p>
+                            </div>
+                        </a>
+                        </li>
+                        <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                               target="_blank">
+                            <div class="img-box"><img src="res/images/adv/8.jpg"></div>
+                            <div class="infor-box">
+                                <p class="name">JOJO真皮带四叶草石英表</p>
+                                <p class="num">1630积分</p>
+                            </div>
+                        </a>
+                        </li>
+                        <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                               target="_blank">
+                            <div class="img-box"><img src="res/images/adv/9.jpg"></div>
+                            <div class="infor-box">
+                                <p class="name">JOJO真皮带四叶草石英表</p>
+                                <p class="num">1630积分</p>
+                            </div>
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="section-item">
+                <div class="item-header">
+                    <div class="header-title">
+                        10000以上积分专区<a href="#">更多</a>
+                    </div>
+                </div>
+                <div class="item-body">
+                    <ul class="clearfix">
+                        <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html">
+                            <div class="img-box"><img src="res/images/adv/6.jpg"></div>
+                            <div class="infor-box">
+                                <p class="name">JOJO真皮带四叶草石英表</p>
+                                <p class="num">1630积分</p>
+                            </div>
+                        </a>
+                        </li>
+                        <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html">
+                            <div class="img-box"><img src="res/images/adv/7.jpg"></div>
+                            <div class="infor-box">
+                                <p class="name">JOJO真皮带四叶草石英表</p>
+                                <p class="num">1630积分</p>
+                            </div>
+                        </a>
+                        </li>
+                        <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html">
+                            <div class="img-box"><img src="res/images/adv/8.jpg"></div>
+                            <div class="infor-box">
+                                <p class="name">JOJO真皮带四叶草石英表</p>
+                                <p class="num">1630积分</p>
+                            </div>
+                        </a>
+                        </li>
+                        <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html">
+                            <div class="img-box"><img src="res/images/adv/9.jpg"></div>
+                            <div class="infor-box">
+                                <p class="name">JOJO真皮带四叶草石英表</p>
+                                <p class="num">1630积分</p>
+                            </div>
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="level3" name="level" class="rank-list">
+            <div class="title"><span>热兑排行</span></div>
+            <ul class="clearfix">
+                <li class="ad-item"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"><img
+                        src="res/images/adv/10.jpg">
+                    <div class="cover"></div>
+                </a></li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.htm">
+                    <div class="img-box"><img src="res/images/adv/11.jpg"></div>
+                    <div class="infor-box">
+                        <div class="rank-num second">2</div>
+                        <div class="infor">
+                            <p class="name">东凌多仕炉面包机</p>
+                            <p class="num">630积分</p>
+                        </div>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.htm">
+                    <div class="img-box"><img src="res/images/adv/12.jpg"></div>
+                    <div class="infor-box">
+                        <div class="rank-num third">3</div>
+                        <div class="infor">
+                            <p class="name">东凌多仕炉面包机</p>
+                            <p class="num">630积分</p>
+                        </div>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.htm">
+                    <div class="img-box"><img src="res/images/adv/13.jpg"></div>
+                    <div class="infor-box">
+                        <div class="rank-num fourth">4</div>
+                        <div class="infor">
+                            <p class="name">东凌多仕炉面包机</p>
+                            <p class="num">630积分</p>
+                        </div>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.htm">
+                    <div class="img-box"><img src="res/images/adv/14.jpg"></div>
+                    <div class="infor-box">
+                        <div class="rank-num fifth">5</div>
+                        <div class="infor">
+                            <p class="name">东凌多仕炉面包机</p>
+                            <p class="num">630积分</p>
+                        </div>
+                    </div>
+                </a>
+                </li>
+            </ul>
+        </div>
+        <div id="level4" name="level" class="brand-section clearfix">
+            <div class="fl ad">
+                <a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html">
+                    <img src="res/images/adv/15.jpg">
+                </a>
+            </div>
+            <ul class="fr brand-wrap">
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"><img
+                        src="res/images/adv/16.jpg"></a></li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"><img
+                        src="res/images/adv/17.jpg"></a></li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"><img
+                        src="res/images/adv/18.jpg"></a></li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"><img
+                        src="res/images/adv/19.jpg"></a></li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"><img
+                        src="res/images/adv/20.jpg"></a></li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"><img
+                        src="res/images/adv/21.jpg"></a></li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"><img
+                        src="res/images/adv/22.jpg"></a></li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"><img
+                        src="res/images/adv/23.jpg"></a></li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"><img
+                        src="res/images/adv/24.jpg"></a></li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"><img
+                        src="res/images/adv/25.jpg"></a></li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"><img
+                        src="res/images/adv/26.jpg"></a></li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"><img
+                        src="res/images/adv/27.jpg"></a></li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"><img
+                        src="res/images/adv/28.jpg"></a></li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"><img
+                        src="res/images/adv/29.jpg"></a></li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"><img
+                        src="res/images/adv/30.jpg"></a></li>
+            </ul>
+        </div>
+        <div id="level5" name="level" class="main-section clearfix">
+            <div class="section-header">
+                <span>箱包皮具</span><a href="#">时尚女包</a><a href="#">精品男包</a><a href="#">钥匙包/扣</a><a href="#" class="fr">+
+                更多 +</a>
+            </div>
+            <div class="fl ad">
+                <a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html">
+                    <img src="res/images/adv/31.jpg">
+                    <div class="cover"></div>
+                </a>
+            </div>
+            <ul class="fr section-wrap">
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/11.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/12.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/13.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/14.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/32.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/33.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/34.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/35.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+            </ul>
+        </div>
+        <div id="level6" name="level" class="main-section clearfix">
+            <div class="section-header">
+                <span>美妆个护</span><a href="#">面部护理</a><a href="#">香水彩妆</a><a href="#">美妆用具</a><a href="#" class="fr">+ 更多
+                +</a>
+            </div>
+            <div class="fl ad">
+                <a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html">
+                    <img src="res/images/adv/36.jpg">
+                    <div class="cover"></div>
+                </a>
+            </div>
+            <ul class="fr section-wrap">
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/11.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/12.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/13.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/14.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/32.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/33.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/34.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/35.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+            </ul>
+        </div>
+        <div id="level7" name="level" class="main-section clearfix">
+            <div class="section-header">
+                <span>食品酒水</span><a href="#">进口果酒</a><a href="#">冲调饮品</a><a href="#">茶饮</a><a href="#" class="fr">+ 更多
+                +</a>
+            </div>
+            <div class="fl ad">
+                <a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html">
+                    <img src="res/images/adv/31.jpg">
+                    <div class="cover"></div>
+                </a>
+            </div>
+            <ul class="fr section-wrap">
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/11.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/12.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/13.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/14.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/32.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/33.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/34.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/35.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+            </ul>
+        </div>
+        <div id="level8" name="level" class="main-section clearfix">
+            <div class="section-header">
+                <span>珠宝钟表</span><a href="#">银饰品系列</a><a href="#">玉石吊坠</a><a href="#">玉石手镯</a><a href="#" class="fr">+
+                更多 +</a>
+            </div>
+            <div class="fl ad">
+                <a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html">
+                    <img src="res/images/adv/36.jpg">
+                    <div class="cover"></div>
+                </a>
+            </div>
+            <ul class="fr section-wrap">
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/11.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/12.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/13.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/14.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/32.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/33.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/34.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/35.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+            </ul>
+        </div>
+        <div id="level9" name="level" class="main-section clearfix">
+            <div class="section-header">
+                <span>匠心定制</span><a href="#">木艺品</a><a href="#">泥塑</a><a href="#">水晶工艺品</a><a href="#" class="fr">+ 更多
+                +</a>
+            </div>
+            <div class="fl ad">
+                <a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html">
+                    <img src="res/images/adv/31.jpg">
+                    <div class="cover"></div>
+                </a>
+            </div>
+            <ul class="fr section-wrap">
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/11.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/12.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/13.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/14.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/32.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/33.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/34.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/35.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+            </ul>
+        </div>
+        <div id="level10" name="level" class="main-section clearfix">
+            <div class="section-header">
+                <span>家电数码</span><a href="#">料理机</a><a href="#">空气净化器</a><a href="#">文仪耗材</a><a href="#" class="fr">+ 更多
+                +</a>
+            </div>
+            <div class="fl ad">
+                <a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html">
+                    <img src="res/images/adv/36.jpg">
+                    <div class="cover"></div>
+                </a>
+            </div>
+            <ul class="fr section-wrap">
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/11.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/12.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/13.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/14.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/32.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/33.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/34.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/35.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+            </ul>
+        </div>
+        <div id="level11" name="level" class="main-section clearfix">
+            <div class="section-header">
+                <span>家具家装</span><a href="#">床品四件套</a><a href="#">被套</a><a href="#">枕套</a><a href="#" class="fr">+ 更多
+                +</a>
+            </div>
+            <div class="fl ad">
+                <a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html">
+                    <img src="res/images/adv/31.jpg">
+                    <div class="cover"></div>
+                </a>
+            </div>
+            <ul class="fr section-wrap">
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/11.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/12.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/13.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/14.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/32.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/33.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/34.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/35.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+            </ul>
+        </div>
+        <div id="level12" name="level" class="main-section clearfix">
+            <div class="section-header">
+                <span>厨具洗化</span><a href="#">刀具/砧板</a><a href="#">烹饪锅具</a><a href="#">厨房套件</a><a href="#" class="fr">+
+                更多 +</a>
+            </div>
+            <div class="fl ad">
+                <a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html">
+                    <img src="res/images/adv/36.jpg">
+                    <div class="cover"></div>
+                </a>
+            </div>
+            <ul class="fr section-wrap">
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/11.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/12.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/13.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li class="no"><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html"
+                                  target="_blank">
+                    <div class="img-box"><img src="res/images/adv/14.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/32.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/33.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/34.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+                <li><a href="http://www.nicemore.com/pointsSearch/q%E6%BD%98%E5%A4%9A%E6%8B%89-p1.html" target="_blank">
+                    <div class="img-box"><img src="res/images/adv/35.jpg"></div>
+                    <div class="infor-box">
+                        <p class="name">时尚拉杆箱时尚拉杆箱时尚拉杆箱</p>
+                        <p class="num">990积分</p>
+                    </div>
+                </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- main主体 -->
+
+    <!-- 网站底部 -->
+    <div id="footer">
+        <!--<script type="text/javascript">-->
+        <!--$(document).ready(function () {-->
+        <!--$("#common_footer").load(ctx + "common/foot2.jsp");-->
+        <!--});-->
+        <!--</script>-->
+        <div class="web-foot">
+            <div class="foot-nav">
+                <ul class="fixed">
+                    <li class="r1"><em></em>
+                        <div>
+                            <h4>购物指南</h4>
+                            <a href="http://www.nicemore.com/common/loadTopController/nicemore/loadRegister.html">新用户注册</a>
+                            <a href="http://www.nicemore.com/commonEdu/shoppingIntroductionController/loadShoppingIntroduction.html">购物入门</a>
+                            <a href="http://www.nicemore.com/commonEdu/serviceAgreementController/loadServiceAgreement.html">客户服务协议</a>
+                            <a href="http://www.nicemore.com/commonEdu/frequentlyProblemController/loadFrequentlyProblem.html">常见问题</a>
+                        </div>
+                    </li>
+                    <li class="r2"><em></em>
+                        <div>
+                            <h4>合作信息</h4>
+                            <a href="http://www.nicemore.com/commonEdu/shoppingUnitController/loadShoppingUnit.html">商户入驻</a>
+                            <a href="http://www.nicemore.com/commonEdu/merchantRulesController/loadMerchantRules.html">商户规则</a>
+                            <a href="http://www.nicemore.com/commonEdu/partnersController/loadPartners.html">合作伙伴</a>
+                        </div>
+                    </li>
+                    <li class="r3"><em></em>
+                        <div>
+                            <h4>支付与配送</h4>
+                            <a href="http://www.nicemore.com/commonEdu/payOnlineController/loadPayOnline.html">在线支付</a>
+                            <a href="http://www.nicemore.com/commonEdu/InvoiceRuleController/loadInvoiceRule.html">发票规则</a>
+                            <a href="http://www.nicemore.com/commonEdu/deliveryFeeController/loadDeliveryFee.html">配送费收取标准</a>
+                        </div>
+                    </li>
+                    <li class="r4"><em></em>
+                        <div>
+                            <h4>售后服务</h4>
+                            <a href="http://www.nicemore.com/commonEdu/afterSalesServiceController/loadAfterSalesService.html">售后服务总则</a>
+                            <a href="http://www.nicemore.com/commonEdu/customerServiceController/loadCustomerService.html">联系客服</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="common_footer">
+                <div class="web-footer">
+                    <p>
+                        <a href="http://www.nicemore.com/commonEdu/niceIntroduceController/loadNiceIntroduce.html">关于莱斯商城</a>
+                        |
+                        <a href="http://www.nicemore.com/commonEdu/customerServiceController/loadCustomerService.html">联系我们</a>
+                        |
+                        <a href="http://www.jsdyyt.com/">大圆银泰</a> |
+                        <a href="http://www.nicemore.com/commonEdu/partnersController/loadPartners.html">合作伙伴</a> |
+                        <a href="http://www.nicemore.com/commonEdu/lawProtectionController/loadLawProtection.html">法律保护</a>
+                        |
+                        <a href="http://www.nicemore.com/commonEdu/userIndemnityController/loadUserIndemnity.html">用户保障</a>
+                    </p>
+                    <p>
+                        江苏莱斯电子商务有限公司 版权所有.&nbsp;&nbsp; 增值电信业务经营许可证:苏B1.B2-20150078 <br>
+                        <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32010502010068"
+                           target="_blank">
+                            <img src="http://www.nicemore.com/res/images/gonganwangbei.png" width="20" height="20">
+                            苏公网安备32010502010068
+                        </a>
+                        <a href="http://www.miitbeian.gov.cn/" target="_blank">苏ICP备15036093号-1</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 网站底部 -->
+
+    <!-- 返回顶部 -->
+    <div class="go-top" style="display: none;">
+        <a href="javascript:void(0);" data="level1">限时特惠</a>
+        <a href="javascript:void(0);" data="level2">分区兑换</a>
+        <a href="javascript:void(0);" data="level3">热兑排行</a>
+        <a href="javascript:void(0);" data="level4">大牌推荐</a>
+        <a href="javascript:void(0);" data="level5">箱包皮具</a>
+        <a href="javascript:void(0);" data="level6">美妆个护</a>
+        <a href="javascript:void(0);" data="level7">食品酒水</a>
+        <a href="javascript:void(0);" data="level8">珠宝钟表</a>
+        <a href="javascript:void(0);" data="level9">匠心定制</a>
+        <a href="javascript:void(0);" data="level10">家电数码</a>
+        <a href="javascript:void(0);" data="level11">家具家装</a>
+        <a href="javascript:void(0);" data="level12">厨具洗化</a>
+        <a href="javascript:void(0);" class="top"></a>
+    </div>
+    <!-- 返回顶部 -->
+    <div class="shadow-mask"></div>
+    <style>
+        #longinDiv {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            font-size: 12px;
+            border: 0px solid #000;
+            z-index: 10001;
+            display: none;
+            top: 0px;
+            background: url(http://www.nicemore.com/res/images/register/wapperbg-quicklogin.png) repeat;
+        }
+
+        input.btn-default {
+            padding: 10px 48px;
+        }
+    </style>
+</div>
+<script>
+    function showLoginDIV() {
+        //$("#longinlittleDiv").load(ctx+"shoppingCart/quickLoginController/quickLogin.html");
+        $("#longinDiv").show();
+        $('#mainLogin').addClass('logined');
+        var obj = $("#longinlittleDiv");//获得相应的Div对象
+        var logistiscsDivWith = obj.width();
+        var logistiscsDivHight = obj.height();
+        var windowWidth = $(window).width();
+        var windowHight = $(window).height();
+        var x = (windowWidth - logistiscsDivWith) / 2;
+        var y = (windowHight - logistiscsDivHight) / 2;
+        obj.css("top", y).css("left", x);
+    }
+</script>
+</body>
+</html>
